@@ -6,7 +6,7 @@ package restart.com.movietask.bean;
 
 public class Rating {
     private int max;
-    private int average;
+    private String average;
     private String stars;
     private int min;
 
@@ -18,11 +18,11 @@ public class Rating {
         this.max = max;
     }
 
-    public int getAverage() {
+    public String getAverage() {
         return average;
     }
 
-    public void setAverage(int average) {
+    public void setAverage(String average) {
         this.average = average;
     }
 

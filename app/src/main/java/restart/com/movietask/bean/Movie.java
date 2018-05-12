@@ -17,6 +17,7 @@ public class Movie {
     private List<Cast> casts;
     private List<Director> directors;
 
+
     public String getId() {
         return id;
     }
