@@ -71,14 +71,14 @@ public class MainActivity extends AppCompatActivity  implements android.support.
         mLoadingDialog = new ProgressDialog(this);
         mLoadingDialog.setMessage("加载中...");
 
-        initEvent();
-
         myAllMovieAdapter = new MyAllMovieAdapter(this);
         rv_all_movie.setLayoutManager(new GridLayoutManager(this,2));
         rv_all_movie.setAdapter(myAllMovieAdapter);
         mySearchMovieAdapter = new MySearchMovieAdapter(this);
         rv_search_movie.setLayoutManager(new LinearLayoutManager(this, OrientationHelper.VERTICAL,false));
         rv_search_movie.setAdapter(mySearchMovieAdapter);
+
+        initEvent();
         //changeView(ALL);
         supportLoaderManager = getSupportLoaderManager();
         supportLoaderManager.initLoader(0, null, this);

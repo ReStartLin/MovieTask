@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="restart.com.movietask.ShowMovieActivity">
+
+    <RelativeLayout
+        android:id="@+id/id_rl_show"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <ImageView
+            android:id="@+id/id_show_movie_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/temp" />
+
+        <TextView
+            android:id="@+id/id_show_movie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="27dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp"
+            android:text="银河护卫队2"
+            android:textColor="#ffffff"
+            android:textSize="35sp" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/id_tv_show_movie_director"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="导演: 詹姆斯 古恩"
+        android:textColor="#131518"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/id_tv_show_movie_cats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="主演: 克里斯 普拉特 左依 索尔达娜 戴夫 巴蒂斯塔"
+        android:textColor="#131518"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/id_tv_show_movie_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="上映: 2017"
+        android:textColor="#131518"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/id_tv_show_movie_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="类型: 动作/科幻/冒险/"
+        android:textColor="#131518"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/id_tv_show_movie_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="故事简介:\n"
+        android:textColor="#131518"
+        android:textSize="16sp" />
+
+
+</LinearLayout>

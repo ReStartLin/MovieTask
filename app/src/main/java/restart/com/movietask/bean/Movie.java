@@ -1,12 +1,13 @@
 package restart.com.movietask.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Administrator on 2018/5/10.
  */
 
-public class Movie {
+public class Movie implements Serializable {
     private String id;
     private Rating rating;
     private String title;

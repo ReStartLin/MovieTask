@@ -1,6 +1,7 @@
 package restart.com.movietask.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -19,9 +21,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import restart.com.movietask.R;
-import restart.com.movietask.bean.Cast;
-import restart.com.movietask.bean.Director;
+import restart.com.movietask.ShowMovieActivity;
 import restart.com.movietask.bean.Movie;
+import restart.com.movietask.util.ShowInfo;
 
 /**
  * Created by Administrator on 2018/5/12.
@@ -54,7 +56,7 @@ public class MySearchMovieAdapter extends RecyclerView.Adapter<MySearchMovieAdap
 
     @Override
     public void onBindViewHolder(@NonNull SearchMovieViewHolder holder, int position) {
-        Movie movie = data.get(position);
+        final Movie movie = data.get(position);
         Picasso.with(context)
                 .load(Uri.parse(movie.getImageUrl()))
                 .placeholder(R.drawable.temp)
@@ -64,38 +66,21 @@ public class MySearchMovieAdapter extends RecyclerView.Adapter<MySearchMovieAdap
         holder.rb_search_movie_average.setRating(average/2.0f);
         holder.tv_search_movie_average.setText(String.valueOf(average));
 
-        holder.tv_search_movie_director.setText(getDirector(movie.getDirectors()));
-        holder.tv_search_movie_cats.setText(getCat(movie.getCasts()));
+        holder.tv_search_movie_director.setText(ShowInfo.getDirector(movie.getDirectors()));
+        holder.tv_search_movie_cats.setText(ShowInfo.getCat(movie.getCasts()));
         holder.tv_search_movie_time.setText("上映: "+movie.getYear());
-    }
 
-    /**
-     * 获取主演
-     * @param casts
-     * @return
-     */
-    private String getCat(List<Cast> casts) {
-        StringBuilder stringBuilder = new StringBuilder("主演:");
-        for (Cast cast : casts) {
-            stringBuilder.append(" "+cast.getName());
-        }
-        return stringBuilder.toString();
+        holder.ll_search_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = ShowMovieActivity.getInstance(context, movie);
+                context.startActivity(intent);
+            }
+        });
     }
 
 
 
-    /**
-     * 获取导演
-     * @param directors
-     * @return
-     */
-    private String getDirector(List<Director> directors) {
-        StringBuilder stringBuilder = new StringBuilder("导演:");
-        for (Director director : directors) {
-            stringBuilder.append(" "+director.getName());
-        }
-        return stringBuilder.toString();
-    }
 
     static class SearchMovieViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.id_iv_search_img)
@@ -112,7 +97,8 @@ public class MySearchMovieAdapter extends RecyclerView.Adapter<MySearchMovieAdap
         TextView tv_search_movie_cats;
         @BindView(R.id.id_tv_search_movie_time)
         TextView tv_search_movie_time;
-
+        @BindView(R.id.id_ll_search_view)
+        LinearLayout ll_search_view;
 
 
         SearchMovieViewHolder(View itemView) {
