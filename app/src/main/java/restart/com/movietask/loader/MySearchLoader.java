@@ -36,6 +36,14 @@ public class MySearchLoader extends android.support.v4.content.AsyncTaskLoader<L
             if (data == null) {
                 Log.d("tag", "loadInBackground:  data null ----------------");
             }
+        } else {
+            String title = bundle.getString("title");
+            String type = bundle.getString("type");
+            data = MyHttpBiz.getInstance().getSearchMovie(title, type);
+            if (data == null) {
+                Log.d("tag", "loadInBackground:  data null ----------------");
+            }
+
         }
         return data;
     }

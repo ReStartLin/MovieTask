@@ -6,7 +6,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -21,6 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import restart.com.movietask.adapter.MyAllMovieAdapter;
+import restart.com.movietask.adapter.MySearchMovieAdapter;
 import restart.com.movietask.bean.Movie;
 import restart.com.movietask.loader.MySearchLoader;
 
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity  implements android.support.
 
 
     private MyAllMovieAdapter myAllMovieAdapter;
+    private MySearchMovieAdapter mySearchMovieAdapter;
     private android.support.v4.app.LoaderManager supportLoaderManager;
 
     @Override
@@ -71,6 +76,9 @@ public class MainActivity extends AppCompatActivity  implements android.support.
         myAllMovieAdapter = new MyAllMovieAdapter(this);
         rv_all_movie.setLayoutManager(new GridLayoutManager(this,2));
         rv_all_movie.setAdapter(myAllMovieAdapter);
+        mySearchMovieAdapter = new MySearchMovieAdapter(this);
+        rv_search_movie.setLayoutManager(new LinearLayoutManager(this, OrientationHelper.VERTICAL,false));
+        rv_search_movie.setAdapter(mySearchMovieAdapter);
         //changeView(ALL);
         supportLoaderManager = getSupportLoaderManager();
         supportLoaderManager.initLoader(0, null, this);
@@ -84,7 +92,7 @@ public class MainActivity extends AppCompatActivity  implements android.support.
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 nowType = sp_movie_type.getItemAtPosition(position).toString();
-                if (nowType.equals("未选中")) {
+                if (nowType.equals("请选择")) {
                     nowType = "";
                 }
             }
@@ -122,6 +130,7 @@ public class MainActivity extends AppCompatActivity  implements android.support.
                 break;
             case R.id.id_tv_back:
                 changeView(ALL);
+                searchAll();
                 break;
         }
     }
@@ -164,6 +173,17 @@ public class MainActivity extends AppCompatActivity  implements android.support.
                     tv_search.setText("无结果");
                 } else {
                     tv_search.setText("搜索");
+                }
+                Log.d("tag", "onLoadFinished: ---------------------------------------");
+                for (Movie datum : data) {
+
+                        Log.d("tag", "onLoadFinished:"+datum.toString());
+
+                }
+                Log.d("tag", "onLoadFinished: ---------------------------------------");
+                if (mySearchMovieAdapter != null) {
+                    mySearchMovieAdapter.setData(data);
+                    mySearchMovieAdapter.notifyDataSetChanged();
                 }
                 break;
         }

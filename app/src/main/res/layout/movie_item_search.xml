@@ -1,6 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/id_iv_search_img"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_weight="2"
+        android:src="@drawable/temp" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3">
+
+        <TextView
+            android:id="@+id/id_tv_search_movie_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="银河护卫队2"
+            android:textSize="20sp" />
+
+        <RatingBar
+            android:id="@+id/id_rb_search_movie_average"
+            style="@style/Base.Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/id_tv_search_movie_name"
+            android:layout_marginTop="5dp"
+            android:isIndicator="true"
+            android:rating="4.2" />
+
+        <TextView
+            android:id="@+id/id_tv_search_movie_average"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/id_rb_search_movie_average"
+            android:layout_toEndOf="@+id/id_rb_search_movie_average"
+            android:layout_toRightOf="@+id/id_rb_search_movie_average"
+            android:text="8.4"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/id_tv_search_movie_director"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/id_tv_search_movie_average"
+            android:layout_marginTop="5dp"
+            android:text="导演: 詹姆斯 古恩"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/id_tv_search_movie_cats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/id_tv_search_movie_director"
+            android:layout_marginTop="5dp"
+            android:text="主演: 克里斯 普拉特 左依 索尔达娜 戴夫 巴蒂斯塔"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/id_tv_search_movie_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/id_tv_search_movie_cats"
+            android:layout_marginTop="5dp"
+            android:text="上映: 2017"
+            android:textSize="16sp" />
+
+
+    </RelativeLayout>
+</LinearLayout>
